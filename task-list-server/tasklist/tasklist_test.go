@@ -1,7 +1,7 @@
 package tasklist_test
 
 import (
-	. "task-list-server/tasklist"
+	. "task-list/task-list-server/tasklist"
 	"time"
 
 	. "github.com/onsi/ginkgo"

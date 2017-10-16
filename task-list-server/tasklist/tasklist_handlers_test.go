@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	. "task-list-server/tasklist"
+	. "task-list/task-list-server/tasklist"
 	"time"
 
 	. "github.com/onsi/ginkgo"
