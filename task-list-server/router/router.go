@@ -1,7 +1,7 @@
 package router
 
 import (
-	"task-list-server/tasklist"
+	"task-list/task-list-server/tasklist"
 	"time"
 
 	"github.com/go-chi/chi"

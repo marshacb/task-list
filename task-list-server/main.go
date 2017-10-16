@@ -1,6 +1,6 @@
 package main
 
-import "task-list-server/server"
+import "task-list/task-list-server/server"
 
 func main() {
 
