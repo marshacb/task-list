@@ -6,6 +6,7 @@ Getting Started
 ====================
 Set up GOPATH 
 Inside of task-list-server directory run the go build command
+Once the binary is build use the ./task-list command to execute the program
 
 Inside of task-list-client directory run npm install
 After dependencies are finished installing run the npm start command 
