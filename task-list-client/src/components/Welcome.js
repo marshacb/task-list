@@ -14,7 +14,7 @@ export class Welcome extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="welcome">
         <nav>
           <div className="nav-wrapper">
             <Link to="/" className="brand-logo">

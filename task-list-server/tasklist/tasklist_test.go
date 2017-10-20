@@ -10,7 +10,7 @@ import (
 
 var _ = Describe("taskList", func() {
 	Context("AddTaskItem", func() {
-		It("Adds a todo item to a todo list", func() {
+		It("Adds a task item to a task list", func() {
 			taskList := TaskList{TaskItem{Id: 0, Name: "Task1", Description: "Go to store", DueDate: time.Date(2016, time.May, 19, 1, 2, 3, 4, time.UTC)}}
 			response := taskList.AddTaskItem("Task2", "Go back home", time.Date(2016, time.May, 19, 1, 2, 3, 4, time.UTC), false)
 
@@ -19,7 +19,7 @@ var _ = Describe("taskList", func() {
 	})
 
 	Context("RemoveItemFromTaskList", func() {
-		It("Removes an item from a todo list", func() {
+		It("Removes an item from a task list", func() {
 			taskList := TaskList{
 				TaskItem{Id: 0, Name: "Task1", Description: "Go to store", DueDate: time.Date(2016, time.May, 19, 1, 2, 3, 4, time.UTC)},
 				TaskItem{Id: 1, Name: "Task2", Description: "Go home", DueDate: time.Date(2016, time.May, 19, 1, 2, 3, 4, time.UTC)}}

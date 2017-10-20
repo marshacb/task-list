@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteTask, updateTask } from "../actions/taskActions";
 
-class TaskItem extends Component {
+export class TaskItem extends Component {
   updateComplete() {
     this.props.updateTask(this.props.item.id);
   }
@@ -30,7 +30,7 @@ class TaskItem extends Component {
 
   render() {
     return (
-      <div>
+      <div className='taskitem'>
         <div className="row">
           <div className="col s12 m6">
             <div className="card blue-grey darken-1">

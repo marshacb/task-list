@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-class TaskDetail extends Component {
+export class TaskDetail extends Component {
   render() {
     return (
-      <div>
+      <div className='taskdetail' >
         TaskDetail
         <div>Name: {this.props.taskDetail[0].name}</div>
         <div>Description: {this.props.taskDetail[0].description}</div>

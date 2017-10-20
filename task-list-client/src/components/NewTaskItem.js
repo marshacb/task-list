@@ -23,7 +23,7 @@ export class NewTaskItem extends Component {
 
   render() {
     return (
-      <div>
+      <div className='newtaskitem'>
         <h2>Create New Task</h2>
         <div className="row">
           <form className="col s12">
