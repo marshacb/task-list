@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"task-list/task-list-server/helpers"
 )
 
 type TaskENV struct {
-	TaskList TaskList
+	TaskList
 }
 
 func CreateTaskListENV() *TaskENV {
@@ -17,10 +18,7 @@ func CreateTaskListENV() *TaskENV {
 }
 
 func (env *TaskENV) GetTaskListHandler(w http.ResponseWriter, r *http.Request) {
-	response, _ := json.Marshal(env.TaskList)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(response)
+	helpers.RespondWithJSON(w, http.StatusOK, env.TaskList)
 }
 
 func (env *TaskENV) AddTaskItemHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,8 +27,7 @@ func (env *TaskENV) AddTaskItemHandler(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&taskListData)
 	if err != nil {
 		log.Println("AddTaskItemHandler Error: ", err)
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte("Error updating task list"))
+		helpers.RespondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -38,10 +35,7 @@ func (env *TaskENV) AddTaskItemHandler(w http.ResponseWriter, r *http.Request) {
 
 	updatedTaskList := env.TaskList.AddTaskItem(taskListData.Name, taskListData.Description, taskListData.DueDate, false)
 
-	response, _ := json.Marshal(updatedTaskList)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(response)
+	helpers.RespondWithJSON(w, http.StatusOK, updatedTaskList)
 }
 
 func (env *TaskENV) RemoveTaskItemHandler(w http.ResponseWriter, r *http.Request) {
@@ -50,15 +44,12 @@ func (env *TaskENV) RemoveTaskItemHandler(w http.ResponseWriter, r *http.Request
 	err := json.NewDecoder(r.Body).Decode(&taskListData)
 	if err != nil {
 		log.Println("RemoveTaskItemHandler Error: ", err)
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte("Error removing task item"))
+		helpers.RespondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	updatedTaskList := env.TaskList.RemoveItemFromTaskList(taskListData.TaskItemId)
 
-	response, _ := json.Marshal(updatedTaskList)
-	w.WriteHeader(http.StatusOK)
-	w.Write(response)
+	helpers.RespondWithJSON(w, http.StatusOK, updatedTaskList)
 }
 
 func (env *TaskENV) UpdateTaskHandler(w http.ResponseWriter, r *http.Request) {
@@ -70,14 +61,11 @@ func (env *TaskENV) UpdateTaskHandler(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&taskData)
 	if err != nil {
 		log.Println("UpdateTaskHandler Error: ", err)
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte("Error reading task item"))
+		helpers.RespondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 
 	updatedTaskList := env.TaskList.UpdateTask(taskData.Id)
 
-	response, _ := json.Marshal(updatedTaskList)
-	w.WriteHeader(http.StatusOK)
-	w.Write(response)
+	helpers.RespondWithJSON(w, http.StatusOK, updatedTaskList)
 }

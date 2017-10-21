@@ -77,7 +77,7 @@ var _ = Describe("TaskListIntegration", func() {
 	})
 
 	Context("PUT /task", func() {
-		It("updates completed state a task by specified id", func() {
+		It("updates completed state of a task by specified id", func() {
 			taskData := struct {
 				Id int `json:"id"`
 			}{Id: 2}

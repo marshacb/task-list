@@ -46,7 +46,7 @@ func (taskList *TaskList) RemoveItemFromTaskList(itemToRemoveId int) TaskList {
 			return *taskList
 		}
 	}
-	log.Printf("No to do item with id %v found", itemToRemoveId)
+	log.Printf("No task item with id %v found", itemToRemoveId)
 	return *taskList
 }
 
